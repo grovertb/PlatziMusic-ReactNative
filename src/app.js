@@ -15,17 +15,19 @@ import {
 } from 'react-native';
 
 import ArtisList from './ArtisList';
+import { getArtists } from './apiClient';
 
 export default class PlatziMusic extends Component {
-  render() {
-    const artist = {
-      image: 'http://eskipaper.com/images/cool-android-wallpaper-1.jpg',
-      name: 'Grover Trujillo Benites',
-      likes: 200,
-      comments: 140,
-    };
-    const artists = Array(500).fill(artist);
+  state = {
+    artists: []
+  };
 
+  componentDidMount() {
+    getArtists().then(data => this.setState({ artists: data }));
+  }
+
+  render() {
+    const artists = this.state.artists;
     return (
       <View style={styles.container}>
         <ArtisList artists={artists} />
