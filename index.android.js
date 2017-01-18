@@ -18,16 +18,9 @@ export default class PlatziMusic extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <View style={[styles.box, styles.red]} />
+        <View style={[styles.box, styles.green]} />
+        <View style={[styles.box, styles.blue]} />
       </View>
     );
   }
@@ -36,19 +29,26 @@ export default class PlatziMusic extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+    flexDirection: 'row',
+    /*justifyContent: 'space-around',*/
+    /*alignItems: 'center',*/
+    flexWrap: 'wrap',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  box: {
+    width: 130,
+    height: 200,
+    backgroundColor: 'black',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  red: {
+    backgroundColor: 'red',
+  },
+  green: {
+    backgroundColor: 'green',
+  },
+  blue: {
+    backgroundColor: 'blue',
   },
 });
 
