@@ -10,11 +10,11 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  ListView,
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/Ionicons';
-import ArtisBox from './ArtisBox';
+import ArtisList from './ArtisList';
 
 export default class PlatziMusic extends Component {
   render() {
@@ -24,13 +24,11 @@ export default class PlatziMusic extends Component {
       likes: 200,
       comments: 140,
     };
+    const artists = Array(500).fill(artist);
+
     return (
       <View style={styles.container}>
-        <ArtisBox artist={artist} />
-        <ArtisBox artist={artist} />
-        <ArtisBox artist={artist} />
-        <ArtisBox artist={artist} />
-        <ArtisBox artist={artist} />
+        <ArtisList artists={artists} />
       </View>
     );
   }
@@ -40,7 +38,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'lightgray',
-    paddingTop: 50,
   },
 });
 
