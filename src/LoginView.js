@@ -8,6 +8,7 @@ import {
   View,
   Text,
   Button,
+  Image,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import FBSDK, { LoginButton, AccessToken } from 'react-native-fbsdk';
@@ -32,7 +33,7 @@ export default class LoginView extends Component {
       const { accessToken } = data
       const credential = FacebookAuthProvider.credential(accessToken)
       firebaseAuth.signInWithCredential(credential).then((credentials) => {
-        Actions.home()
+        // Actions.home()
       }, (error) => {
         console.log("Sign in error", error)
       })
@@ -41,8 +42,9 @@ export default class LoginView extends Component {
   // publishPermissions={['publish_actions']}
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.saludo}>Bienvenido Alumno</Text>
+      <Image source={require('./background.jpg')} style={styles.container} >
+        <Text style={styles.saludo}>Bienvenido a PlatziMusic</Text>
+        <Image source={require('./logo.png')} style={styles.logo} />
         <Text style={styles.saludo}>
           {this.state.credentials && this.state.credentials.displayName}
         </Text>
@@ -50,7 +52,7 @@ export default class LoginView extends Component {
           readPermissions={['public_profile', 'email']}
           onLoginFinished={ this.handleLoginFinished }
           onLogoutFinished={() => alert("logout.")}/>
-      </View>
+      </Image>
     );
   }
 
@@ -68,15 +70,21 @@ export default class LoginView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: null,
+    height: null,
     backgroundColor: 'lightgray',
     justifyContent: 'center',
     alignItems: 'center',
   },
+  logo: {
+    width: 100,
+    height: 100,
+  },
   saludo: {
     fontSize: 24,
     fontWeight: '600',
-    marginBottom: 20,
+    marginVertical: 10,
     backgroundColor: 'transparent',
-    color: 'black',
+    color: 'white',
   },
 });
