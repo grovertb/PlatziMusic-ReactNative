@@ -4,6 +4,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  Text,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -13,13 +14,34 @@ import { getArtists } from './apiClient';
 
 import { firebaseDatabase } from './firebase'
 
+import CommentList from './CommentList'
 
 export default class ArtistDetailView extends Component {
+  state = {
+    comments: []
+  }
+
+  componentDidMount() {
+    this.getArtistCommentsRef().on('child_added', this.addComment);
+  }
+
+  componentWillUnmount(){
+    this.getArtistCommentsRef().off('child_added', this.addComment);
+  }
+
+  addComment = (data) => {
+    const comment = data.val()
+    this.setState({
+      comments: this.state.comments.concat(comment)
+    })
+  }
+
   handleSend = () => {
     const { text } = this.state
     const artistCommentsRef = this.getArtistCommentsRef()
     const newCommentRef = artistCommentsRef.push();
     newCommentRef.set({ text })
+    this.setState({ text: '' })
   };
 
   getArtistCommentsRef = () => {
@@ -31,14 +53,18 @@ export default class ArtistDetailView extends Component {
 
   render() {
     const artist = this.props.artist;
+    const { comments } = this.state;
     return (
       <View style={styles.container}>
         <ArtisBox artist={artist} />
+        <Text style={styles.header}>Comentarios:</Text>
+        <CommentList comments={comments} />
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
             placeholder="Opina sobre este artista"
             onChangeText={this.handleChangeText}
+            value={this.state.text}
           />
           <TouchableOpacity onPress={this.handleSend}>
             <Icon name="ios-send-outline" size={30} color="gray" />
@@ -55,12 +81,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgray',
     paddingTop: 60,
   },
+  header: {
+    fontSize: 20,
+    marginVertical:15,
+    paddingHorizontal: 15,
+  },
   inputContainer: {
     flexDirection: 'row',
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    left: 0,
     backgroundColor: 'white',
     height: 50,
     paddingHorizontal: 10,
