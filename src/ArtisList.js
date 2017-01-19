@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { ListView } from 'react-native';
+import { ListView, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 import ArtisBox from './ArtisBox';
 
@@ -29,12 +30,24 @@ export default class ArtisList extends Component {
     });
   };
 
+  handlePress(artist) {
+    Actions.artistDetail({ artist })
+  }
+
   render() {
+    const artist = this.props.artist
     return (
       <ListView
         enableEmptySections={true}
         dataSource={this.state.dataSource}
-        renderRow={(artist) => <ArtisBox artist={artist} />}
+        renderRow={(artist) => {
+          return (
+            <TouchableOpacity
+              onPress={() => this.handlePress(artist)} >
+              <ArtisBox artist={artist} />
+            </TouchableOpacity>
+          )
+        }}
       />
     );
   }
