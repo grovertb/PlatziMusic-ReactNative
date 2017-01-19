@@ -40,7 +40,7 @@ export default class CoomentList extends Component {
         dataSource={this.state.dataSource}
         renderRow={(comment) => {
           return (
-              <Comment text={comment.text} />
+              <Comment text={comment.text} avatar={comment.userPhoto} />
           )
         }}
       />

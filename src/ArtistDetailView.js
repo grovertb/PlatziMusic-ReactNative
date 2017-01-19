@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import ArtisBox from './ArtisBox';
 import { getArtists } from './apiClient';
 
-import { firebaseDatabase } from './firebase'
+import { firebaseDatabase, firebaseAuth } from './firebase'
 
 import CommentList from './CommentList'
 
@@ -38,9 +38,14 @@ export default class ArtistDetailView extends Component {
 
   handleSend = () => {
     const { text } = this.state
+    const { uid, photoURL } = firebaseAuth.currentUser
     const artistCommentsRef = this.getArtistCommentsRef()
     const newCommentRef = artistCommentsRef.push();
-    newCommentRef.set({ text })
+    newCommentRef.set({
+      text,
+      userPhoto: photoURL,
+      uid,
+    })
     this.setState({ text: '' })
   };
 
