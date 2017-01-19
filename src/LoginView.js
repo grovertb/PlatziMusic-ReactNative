@@ -33,7 +33,7 @@ export default class LoginView extends Component {
       const { accessToken } = data
       const credential = FacebookAuthProvider.credential(accessToken)
       firebaseAuth.signInWithCredential(credential).then((credentials) => {
-        // Actions.home()
+        Actions.home()
       }, (error) => {
         console.log("Sign in error", error)
       })
