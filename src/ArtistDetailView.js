@@ -22,18 +22,34 @@ export default class ArtistDetailView extends Component {
   }
 
   componentDidMount() {
-    this.getArtistCommentsRef().on('child_added', this.addComment);
+    this.getArtistCommentsRef().on('value', this.addComment);
+    // this.setState({
+    //   comments: this.fake()
+    // })
   }
 
   componentWillUnmount(){
-    this.getArtistCommentsRef().off('child_added', this.addComment);
+    this.getArtistCommentsRef().off('value', this.addComment);
   }
 
   addComment = (data) => {
     const comment = data.val()
     this.setState({
-      comments: this.state.comments.concat(comment)
+      comments: comment || []
     })
+  }
+
+  fake() {
+    var list = []
+    var count = Math.round(Math.random()*10)
+    console.log(count)
+    for(var i = 0; i < count; i++){
+      list.push({
+        text: 'ola ke ase' + i,
+        uuid: i
+      })
+    }
+    return list
   }
 
   handleSend = () => {
