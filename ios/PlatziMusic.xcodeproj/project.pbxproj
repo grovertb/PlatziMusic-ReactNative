@@ -35,6 +35,7 @@
 		54A83C8BF1304240B105B97E /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C9CF9F5D51A413B9B10B6F9 /* SimpleLineIcons.ttf */; };
 		2D92E20024644FE7AD50266F /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5460355CF01F49CDB771C5AE /* Zocial.ttf */; };
 		6DF0BDA18A1A40D29E0B5392 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A879E50EF4F8413C86A1EC9E /* libRCTFBSDK.a */; };
+		1600A44AAAFB410F9561F4D8 /* libRNShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F42C039747480AA0F36AB3 /* libRNShare.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -259,6 +260,8 @@
 		5460355CF01F49CDB771C5AE /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		20284C6A828F4EB0BF766F77 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; name = "RCTFBSDK.xcodeproj"; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		A879E50EF4F8413C86A1EC9E /* libRCTFBSDK.a */ = {isa = PBXFileReference; name = "libRCTFBSDK.a"; path = "libRCTFBSDK.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		CB3CA87A33A442AD827E3E02 /* RNShare.xcodeproj */ = {isa = PBXFileReference; name = "RNShare.xcodeproj"; path = "../node_modules/react-native-share/ios/RNShare.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		F1F42C039747480AA0F36AB3 /* libRNShare.a */ = {isa = PBXFileReference; name = "libRNShare.a"; path = "libRNShare.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +290,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				358AC9A5963F48D081D58C2B /* libRNVectorIcons.a in Frameworks */,
 				6DF0BDA18A1A40D29E0B5392 /* libRCTFBSDK.a in Frameworks */,
+				1600A44AAAFB410F9561F4D8 /* libRNShare.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +437,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				13DA7C78679E48739844CCA3 /* RNVectorIcons.xcodeproj */,
 				20284C6A828F4EB0BF766F77 /* RCTFBSDK.xcodeproj */,
+				CB3CA87A33A442AD827E3E02 /* RNShare.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -887,6 +892,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -903,6 +909,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlatziMusic.app/PlatziMusic";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);

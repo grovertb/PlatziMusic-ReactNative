@@ -10,6 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { firebaseDatabase, firebaseAuth } from './firebase'
+import Share, {ShareSheet, Button} from 'react-native-share';
 
 export default class ArtisBox extends Component {
   state = {
@@ -80,6 +81,19 @@ export default class ArtisBox extends Component {
     });
   }
 
+  handleShared = () => {
+    const { url, name } = this.props.artist;
+    let shareOptions = {
+      title: name,
+      message: "GroverTB",
+      url: url
+    };
+
+    Share.shareSingle(Object.assign(shareOptions, {
+       "social": "facebook"
+     }));
+  };
+
   render() {
     const { image, name } = this.props.artist;
     const likeIcon = this.state.liked ? <Icon name='ios-heart' size={30} color="#e74c3c" /> : <Icon name='ios-heart-outline' size={30} color="gray" />
@@ -99,6 +113,12 @@ export default class ArtisBox extends Component {
             <View style={styles.iconContainer}>
               <Icon name="ios-chatboxes-outline" size={30} color="gray" />
               <Text style={styles.count} >{commentCount}</Text>
+            </View>
+            <View style={styles.iconContainer}>
+              <TouchableOpacity onPress={this.handleShared}>
+                <Icon name="md-share" size={30} color="gray" />
+              </TouchableOpacity>
+              <Text style={styles.count} >Shared</Text>
             </View>
           </View>
         </View>
@@ -137,7 +157,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 30,
+    marginHorizontal: 10,
     marginTop: 20,
   },
   iconContainer: {

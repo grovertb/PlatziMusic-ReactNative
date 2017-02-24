@@ -23,9 +23,6 @@ export default class ArtistDetailView extends Component {
 
   componentDidMount() {
     this.getArtistCommentsRef().on('value', this.addComment);
-    // this.setState({
-    //   comments: this.fake()
-    // })
   }
 
   componentWillUnmount(){
@@ -37,19 +34,6 @@ export default class ArtistDetailView extends Component {
     this.setState({
       comments: comment || []
     })
-  }
-
-  fake() {
-    var list = []
-    var count = Math.round(Math.random()*10)
-    console.log(count)
-    for(var i = 0; i < count; i++){
-      list.push({
-        text: 'ola ke ase' + i,
-        uuid: i
-      })
-    }
-    return list
   }
 
   handleSend = () => {
