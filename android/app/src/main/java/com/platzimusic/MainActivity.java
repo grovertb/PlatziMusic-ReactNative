@@ -1,10 +1,7 @@
 package com.platzimusic;
 
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactActivity;
 import android.content.Intent;
-import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
 
@@ -24,10 +21,4 @@ public class MainActivity extends ReactActivity {
         MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
-//        AppEventsLogger.activateApp(this);
-    }
 }

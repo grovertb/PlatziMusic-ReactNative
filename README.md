@@ -21,3 +21,10 @@
 >    messagingSenderId: "654043733386"
 >  };
 >  firebase.initializeApp(config);
+
+
+## [FIX]
+
+```
+  Remove @Override FBSDKPackage.java:61
+```

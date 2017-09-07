@@ -6,6 +6,8 @@
 
 import React, { Component } from 'react';
 import {
+  View,
+  Text,
   AppRegistry,
 } from 'react-native';
 
@@ -20,12 +22,12 @@ class PlatziMusic extends React.Component {
     return (
       <Router>
         <Scene key="root">
-          <Scene key="login" component={LoginView} animation='fade' hideNavBar />
-          <Scene key="home" component={HomeView} animation='fade' hideNavBar />
+          {/* <Scene key="login" component={LoginView} animation='fade' hideNavBar /> */}
+          {/* <Scene key="home" component={HomeView} animation='fade' hideNavBar /> */}
           <Scene key="artistDetail" component={ArtistDetail} animation='fade' title="Comentarios" hideNavBar={false} />
         </Scene>
       </Router>
-    );
+    )
   }
 }
 
