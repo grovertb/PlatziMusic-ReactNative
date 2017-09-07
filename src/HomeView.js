@@ -32,16 +32,17 @@ export default class HomeView extends Component {
     return (
       <View style={styles.container}>
         <Toolbar
-            title="PlatziMusic"
-            style={{
-              position: 'relative'
-            }}
-            actions={[ {
-              icon   : 'search',
-              onPress: this._handleSearch()
-            } ]}
-            icon='menu'
-            onIconPress={this._handleIconPress} />
+          title="PlatziMusic"
+          style={{
+            position: 'relative'
+          }}
+          actions={[ {
+            icon   : 'search',
+            onPress: this._handleSearch()
+          } ]}
+          icon='menu'
+          onIconPress={this._handleIconPress} 
+        />
         {!artists && <ActivityIndicator size="large" /> }
         {artists && <ArtisList artists={artists} /> }
       </View>
